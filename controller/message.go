@@ -127,7 +127,6 @@ func SendKefuMessage(c *gin.Context) {
 	fromId, _ := c.Get("kefu_name")
 	toId := c.PostForm("to_id")
 	content := c.PostForm("content")
-	//kefu、visitor
 	cType := c.PostForm("type")
 	if content == "" {
 		c.JSON(200, gin.H{
@@ -146,24 +145,8 @@ func SendKefuMessage(c *gin.Context) {
 	}
 	var kefuInfo models.User
 	var vistorInfo models.Visitor
-    // 	kefuInfo = models.FindUser(fromId.(string))
-    // 	vistorInfo = models.FindVisitorByVistorId(toId)
-
-	if cType == "kefu" {
-        // 发送者是客服
-        kefuInfo = models.FindUser(fromId.(string))
-        vistorInfo = models.FindVisitorByVistorId(toId)
-    } else if cType == "visitor" {
-        // 发送者是访客
-        kefuInfo = models.FindUser(toId)           // 接收者是客服
-        vistorInfo = models.FindVisitorByVistorId(fromId.(string)) // 发送者是访客
-    } else {
-        c.JSON(200, gin.H{
-            "code": 400,
-            "msg":  "未知发送者类型",
-        })
-        return
-    }
+	kefuInfo = models.FindUser(fromId.(string))
+	vistorInfo = models.FindVisitorByVistorId(toId)
 
 	if kefuInfo.ID == 0 || vistorInfo.ID == 0 {
 		c.JSON(200, gin.H{
