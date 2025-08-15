@@ -79,7 +79,7 @@ func PostVisitorLogin(c *gin.Context) {
 	countryname, cityname := tools.GetCity("./config/GeoLite2-City.mmdb", c.ClientIP())
 	if countryname != "" || cityname != "" {
 		city = fmt.Sprintf("%s %s", countryname, cityname)
-		name = fmt.Sprintf("%s Guest", city)
+		name = fmt.Sprintf("%s 访客", city)
 	}
 
 	client_ip := c.ClientIP()
@@ -128,9 +128,9 @@ func PostVisitorLogin(c *gin.Context) {
 	visitor.VisitorId = id
 
 	//各种通知
-	go SendNoticeEmail(visitor.Name, " incoming!")
+	go SendNoticeEmail(visitor.Name, " 来了!")
 	//go SendAppGetuiPush(kefuInfo.Name, visitor.Name, visitor.Name+" incoming!")
-	go SendVisitorLoginNotice(kefuInfo.Name, visitor.Name, visitor.Avator, visitor.Name+" incoming!", visitor.VisitorId)
+	go SendVisitorLoginNotice(kefuInfo.Name, visitor.Name, visitor.Avator, visitor.Name+" 来了!", visitor.VisitorId)
 	go ws.VisitorOnline(kefuInfo.Name, visitor)
 	//go SendServerJiang(visitor.Name, "来了", c.Request.Host)
 
