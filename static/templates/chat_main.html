@@ -151,7 +151,7 @@
                         <el-tab-pane label="访客信息" name="visitorInfo">
                             <el-menu class="visitorInfo" v-show="visitor.visitor_id">
                                 <el-tooltip content="点击加入黑名单" placement="left">
-                                    <el-menu-item v-on:click="addIpblack(visitor.source_ip)" style="padding-left:2px;color: #666;">
+                                    <el-menu-item v-on:click="confirmAddIpblack(visitor.source_ip)" style="padding-left:2px;color: #666;">
                                         <i class="el-icon-user"></i>
                                         <span slot="title">IP: <{visitor.source_ip}></span>
                                     </el-menu-item>
@@ -991,6 +991,22 @@
                         error: function (data) {
                             console.log(data);
                         }
+                    });
+                });
+            },
+            confirmAddIpblack(ip) {
+                this.$confirm('确定要将 IP [' + ip + '] 加入黑名单吗？', '确认操作', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    // 用户点击确定
+                    this.addIpblack(ip);
+                }).catch(() => {
+                    // 用户点击取消，不执行
+                    this.$message({
+                        type: 'info',
+                        message: '已取消操作'
                     });
                 });
             },
