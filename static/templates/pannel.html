@@ -53,20 +53,20 @@
     <template>
         <el-card class="deployment-guide">
             <div slot="header" class="clearfix">
-                <h2>System Deployment Guide</h2>
+                <h2>系统部署指南</h2>
             </div>
 
             <el-steps :active="3" align-center>
-                <el-step title="Server Setup" description="Prepare your hosting environment"></el-step>
-                <el-step title="System Installation" description="Deploy the application"></el-step>
-                <el-step title="Configuration" description="Set up system parameters"></el-step>
-                <el-step title="Go Live" description="Launch your chat system"></el-step>
+                <el-step title="服务器准备" description="准备好您的主机环境"></el-step>
+                <el-step title="系统安装" description="部署应用程序"></el-step>
+                <el-step title="系统配置" description="设置系统参数"></el-step>
+                <el-step title="上线运行" description="启动您的聊天系统"></el-step>
             </el-steps>
 
             <div class="deployment-section">
-                <h3>Quick Start via Chat Link</h3>
-                <p>To immediately access your customer support chat interface:</p>
-                <p>Your live chat endpoint is available at:</p>
+                <h3>通过聊天链接快速访问</h3>
+                <p>要立即访问您的客服聊天界面：</p>
+                <p>您的实时聊天访问地址为：</p>
                 <el-input v-model="chatEndpoint" readonly style="width: 100%; margin-top: 10px;">
                     <el-button slot="append" icon="el-icon-document-copy"
                                v-on:click="copyText(chatEndpoint)"></el-button>

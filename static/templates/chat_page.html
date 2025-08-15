@@ -32,7 +32,7 @@
             <div class="chatContext chatVisitorPage">
                 <div class="chatBox">
                     <div class="chatNotice" v-on:click="getHistoryMessage" v-show="showLoadMore">
-                        <a href="javascript:;" class="chatNoticeContent" style="color: #07a9fe;">Load more messages</a>
+                        <a href="javascript:;" class="chatNoticeContent" style="color: #07a9fe;">加载更多消息</a>
                     </div>
                     <el-row :gutter="2" v-for="v in msgList" v-bind:class="{'chatBoxMe': v.is_kefu==false}">
                         <div class="chatTime" v-bind:class="{'chatTimeHide': v.show_time==false}"><span><{v.time}></span></div>
@@ -279,6 +279,9 @@
                 }
                 let _this=this;
                 var extra=getQuery("extra");
+                if (!visitor_id) {
+                    visitor_id = getQuery("visitor_id") || "";
+                }
                 $.post("/visitor_login",{visitor_id:visitor_id,refer:REFER,to_id:to_id,extra:extra},function(res){
                     if(res.code!=200){
                         _this.$message({
