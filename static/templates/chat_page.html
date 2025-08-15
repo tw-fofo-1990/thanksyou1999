@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="chatArticle">
-            <h3 class="hotQuestionTitle">Announcements</h3>
+            <h3 class="hotQuestionTitle">公告</h3>
             <div class="allNotice" v-html><{kefuInfo.allNotice}></div>
         </div>
 
@@ -361,7 +361,7 @@
                     var code=res.code;
                     if(code!=200) return;
                     _this.kefuInfo=res.result;
-                    _this.showTitle(_this.kefuInfo.nickname+" at your service.");
+                    _this.showTitle(_this.kefuInfo.nickname+" 为您服务。");
                     if(!_this.kefuInfo.welcome) return;
                     var msg={
                         content:replaceContent(_this.kefuInfo.welcome),

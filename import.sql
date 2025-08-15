@@ -97,7 +97,7 @@ CREATE TABLE `reply_group` (
  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 INSERT INTO `reply_group` (`id`, `group_name`, `user_id`) VALUES
-(NULL, 'Frequently Asked Questions', 'agent');
+(NULL, '常见问题', 'agent');
 
 DROP TABLE IF EXISTS `reply_item`;
 CREATE TABLE `reply_item` (
