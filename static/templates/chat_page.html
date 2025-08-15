@@ -75,7 +75,7 @@
                 </div>
                 <el-input show-word-limit maxlength="100" :rows="2" type="textarea" resize="none" class="visitorEditorArea" @focus="scrollBottom;showIconBtns=false" @blur="scrollBottom;showIconBtns=false" v-model="messageContent" v-on:keyup.enter.native="chatToUser">
                 </el-input>
-                <el-button type="primary" size="mini" class="visitorEditorBtn" :disabled="sendDisabled||messageContent==''" v-on:click="chatToUser();showIconBtns=false">Send</el-button>
+                <el-button type="primary" size="mini" class="visitorEditorBtn" :disabled="sendDisabled||messageContent==''" v-on:click="chatToUser();showIconBtns=false">发送</el-button>
             </div>
         </div>
         <div class="chatArticle">
