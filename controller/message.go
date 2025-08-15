@@ -152,11 +152,11 @@ func SendKefuMessage(c *gin.Context) {
 	if cType == "kefu" {
         // 发送者是客服
         kefuInfo = models.FindUser(fromId.(string))
-        visitorInfo = models.FindVisitorByVistorId(toId)
+        vistorInfo = models.FindVisitorByVistorId(toId)
     } else if cType == "visitor" {
         // 发送者是访客
         kefuInfo = models.FindUser(toId)           // 接收者是客服
-        visitorInfo = models.FindVisitorByVistorId(fromId.(string)) // 发送者是访客
+        vistorInfo = models.FindVisitorByVistorId(fromId.(string)) // 发送者是访客
     } else {
         c.JSON(200, gin.H{
             "code": 400,
