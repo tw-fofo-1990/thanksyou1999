@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>GOFLY 在线聊天 - 开源实时聊天</title>
+    <title>GG在线聊天 - 实时聊天</title>
     <link rel="stylesheet" href="/static/cdn/element-ui/2.15.1/theme-chalk/index.min.css">
     <script src="/static/cdn/vue/2.6.11/vue.min.js"></script>
     <script src="/static/cdn/element-ui/2.15.1/index.js"></script>
@@ -52,7 +52,7 @@
 <div id="app" class="signin">
     <template>
         <div class="loginHtml">
-            <h1 class="loginTitle">GOFLY 在线聊天</h1>
+            <h1 class="loginTitle">GG 在线聊天</h1>
             <el-form :model="form" :rules="rules" ref="loginForm" v-show="!showRegHtml">
                 <el-form-item prop="account">
                     <el-input v-model="form.account" placeholder="请输入用户名"></el-input>
@@ -63,9 +63,9 @@
                 <el-form-item>
                     <el-button style="width: 100%" type="primary" @click="handleLogin('loginForm')">登录</el-button>
                 </el-form-item>
-                <el-form-item>
-                    <el-button style="width: 100%" @click="showRegHtml=true">创建新账号</el-button>
-                </el-form-item>
+<!--                <el-form-item>-->
+<!--                    <el-button style="width: 100%" @click="showRegHtml=true">创建新账号</el-button>-->
+<!--                </el-form-item>-->
             </el-form>
 
             <el-form :model="form" :rules="rules" ref="registerForm" v-show="showRegHtml">
@@ -81,16 +81,16 @@
                 <el-form-item prop="rePassword">
                     <el-input show-password v-on:keyup.enter.native="handleRegister('registerForm')" v-model="form.rePassword" placeholder="确认密码"></el-input>
                 </el-form-item>
-                <el-form-item>
-                    <el-button style="width: 100%" type="primary" @click="handleRegister('registerForm')">注册</el-button>
-                </el-form-item>
+<!--                <el-form-item>-->
+<!--                    <el-button style="width: 100%" type="primary" @click="handleRegister('registerForm')">注册</el-button>-->
+<!--                </el-form-item>-->
                 <el-form-item>
                     <el-button style="width: 100%" @click="showRegHtml=false">返回登录</el-button>
                 </el-form-item>
             </el-form>
         </div>
 
-        <p class="copyright">GOFLY 在线聊天 - 开源实时聊天平台</p>
+        <p class="copyright">GG 在线聊天 - 实时聊天平台</p>
     </template>
 </div>
 </body>

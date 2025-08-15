@@ -158,39 +158,39 @@ func GetKefuInfoSetting(c *gin.Context) {
 	})
 }
 func PostKefuRegister(c *gin.Context) {
-	name := c.PostForm("username")
-	password := c.PostForm("password")
-	nickname := c.PostForm("nickname")
-	avatar := "/static/images/4.jpg"
-
-	if name == "" || password == "" {
-		c.JSON(http.StatusOK, gin.H{
-			"code":   400,
-			"msg":    "All fields are required",
-			"result": nil,
-		})
-		return
-	}
-
-	existingUser := models.FindUser(name)
-	if existingUser.Name != "" {
-		c.JSON(http.StatusOK, gin.H{
-			"code":   409,
-			"msg":    "Username already exists",
-			"result": nil,
-		})
-		return
-	}
-
-	userID := models.CreateUser(name, tools.Md5(password), avatar, nickname)
-	if userID == 0 {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"code":   500,
-			"msg":    "Registration Failed",
-			"result": nil,
-		})
-		return
-	}
+// 	name := c.PostForm("username")
+// 	password := c.PostForm("password")
+// 	nickname := c.PostForm("nickname")
+// 	avatar := "/static/images/4.jpg"
+//
+// 	if name == "" || password == "" {
+// 		c.JSON(http.StatusOK, gin.H{
+// 			"code":   400,
+// 			"msg":    "All fields are required",
+// 			"result": nil,
+// 		})
+// 		return
+// 	}
+//
+// 	existingUser := models.FindUser(name)
+// 	if existingUser.Name != "" {
+// 		c.JSON(http.StatusOK, gin.H{
+// 			"code":   409,
+// 			"msg":    "Username already exists",
+// 			"result": nil,
+// 		})
+// 		return
+// 	}
+//
+// 	userID := models.CreateUser(name, tools.Md5(password), avatar, nickname)
+// 	if userID == 0 {
+// 		c.JSON(http.StatusInternalServerError, gin.H{
+// 			"code":   500,
+// 			"msg":    "Registration Failed",
+// 			"result": nil,
+// 		})
+// 		return
+// 	}
 
 	c.JSON(http.StatusOK, gin.H{
 		"code": 200,

@@ -148,7 +148,7 @@
                         return;
                     }
                     this.visitor.to_id=msg.id;
-                    this.showTitle(msg.name+", is chatting with you");
+                    this.showTitle(msg.name+", 正在跟您聊天");
                     this.scrollBottom();
                     this.showKfonline=true;
                 }
@@ -193,21 +193,21 @@
                     this.alertSound();
                 }
                 if (redata.type == "close") {
-                    this.chatTitle="The conversation has ended";
+                    this.chatTitle="对话已结束";
                     $(".chatBox").append("<div class=\"chatTime\">"+this.chatTitle+"</div>");
                     this.scrollBottom();
                     this.socket.close();
                     this.focusSendConn=true;
                 }
                 if (redata.type == "force_close") {
-                    this.chatTitle="The conversation was terminated by the agent";
+                    this.chatTitle="对话已被客服结束";
                     $(".chatBox").append("<div class=\"chatTime\">"+this.chatTitle+"</div>");
                     this.scrollBottom();
                     this.socket.close();
                     this.socketClosed=true;
                 }
                 if (redata.type == "auto_close") {
-                    this.chatTitle="The conversation timed out due to inactivity";
+                    this.chatTitle="对话因长时间未操作而结束";
                     $(".chatBox").append("<div class=\"chatTime\">"+this.chatTitle+"</div>");
                     this.scrollBottom();
                     this.socket.close();
@@ -226,7 +226,7 @@
                 this.messageContent=messageContent;
                 if(this.socketClosed){
                     this.$message({
-                        message: 'Connection closed! Please refresh the page',
+                        message: '连接已断开，请重新打开页面',
                         type: 'warning'
                     });
                     return;
@@ -271,16 +271,15 @@
                 this.focusSendConn=true;
             },
             getUserInfo:function(){
-                let obj=this.getCache("visitor_"+KEFU_ID);
-                var visitor_id=""
+                var  visitor_id = getQuery("visitor_id") || "";
                 var to_id=KEFU_ID;
-                if(obj){
-                    visitor_id=obj.visitor_id;
-                }
                 let _this=this;
                 var extra=getQuery("extra");
                 if (!visitor_id) {
-                    visitor_id = getQuery("visitor_id") || "";
+                    let obj=this.getCache("visitor_"+KEFU_ID);
+                    if(obj){
+                        visitor_id=obj.visitor_id;
+                    }
                 }
                 $.post("/visitor_login",{visitor_id:visitor_id,refer:REFER,to_id:to_id,extra:extra},function(res){
                     if(res.code!=200){
